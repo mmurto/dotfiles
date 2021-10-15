@@ -1,0 +1,9 @@
+{
+  "diagnostic.displayByAle": true,
+  "languageserver": {
+    "kotlin": {
+      "command": "~/.local/src/kotlin-language-server/server/build/install/server/bin/kotlin-language-server",
+      "filetypes": ["kotlin"]
+    }
+  }
+}

@@ -1,0 +1,41 @@
+[user]
+	name = Mikko Murto
+	email = mikko.murto@hhpartners.fi
+[ui "color"]
+	ui = always
+[color]
+	ui = true
+[gpg]
+	program = gpg2
+[core]
+	editor = code --wait
+	pager = delta
+[merge]
+    tool = vscode
+[mergetool "vscode"]
+    cmd = code --wait $MERGED
+[diff]
+    tool = vscode
+[difftool "vscode"]
+    cmd = code --wait --diff $LOCAL $REMOTE	
+[github]
+	user = mmurto
+[pull]
+	ff = only
+[interactive]
+	diffFilter = delta --color-only
+[delta]
+	features = side-by-side line-numbers decorations
+	whitespace-error-style = 22 reverse
+	syntax-theme = GitHub
+[delta "decorations"]
+	commit-decoration-style = bold yellow box ul
+	file-style = bold yellow ul
+	file-decoration-style = none
+[filter "lfs"]
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+	clean = git-lfs clean -- %f
+[init]
+	defaultBranch = main
