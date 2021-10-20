@@ -96,4 +96,4 @@
 
 - shell:
     - [git submodule update --init --recursive, Installing submodules]
-    - [sh -c "(curl -fsSL https://starship.rs/install.sh)" -- --yes, Installing Starship]
+    - [curl -fsSL https://starship.rs/install.sh | bash /dev/stdin --yes, Installing Starship]
