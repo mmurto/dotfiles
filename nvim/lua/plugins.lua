@@ -7,11 +7,10 @@ return require("packer").startup(
     function()
         use "wbthomason/packer.nvim"
         use {
-          "projekt0n/github-nvim-theme",
+          "Shatur/neovim-ayu",
           config = function()
-            require('github-theme').setup({
-              theme_style = "light"
-            })
+            require('ayu').colorscheme()
+            require('ayu').setup({})
           end
         }
 	use {
@@ -28,9 +27,11 @@ return require("packer").startup(
         }
 	use "kyazdani42/nvim-web-devicons"
         use {
-          "hoob3rt/lualine.nvim",
+          "nvim-lualine/lualine.nvim",
           config = function()
-            require('lualine').setup{}
+            require('lualine').setup{
+              options = {theme = "ayu_light"}
+          }
           end
         }
 	use {
