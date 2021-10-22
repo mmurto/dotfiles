@@ -10,9 +10,6 @@
 
     # Neovim
     - '~/.config/nvim'
-    - '~/.config/nvim/general'
-    - '~/.config/nvim/keys'
-    - '~/.config/nvim/themes'
 
     # Fish
     - '~/.config/fish'
@@ -46,22 +43,8 @@
     ~/.config/nvim/lua:
       path: nvim/lua/*.lua
       glob: true
-    ~/.config/nvim/vim-plug/plugins.vim:
-      path: nvim/vim-plug/plugins.vim
-    ~/.config/nvim/general:
-      path: nvim/general
-    ~/.config/nvim/keys:
-      path: nvim/keys
-    ~/.config/nvim/themes:
-      path: nvim/themes
     ~/.config/nvim/coc-settings.json:
       path: nvim/coc-settings.json
-    ~/.config/nvim/ale.vim:
-      path: nvim/ale.vim
-    ~/.local/share/nvim/site/autoload/plug.vim:
-      path: nvim/autoload/plug.vim
-    ~/.config/nvim/ftdetect:
-      path: nvim/ftdetect
 
     # Fish shell
     ~/.config/fish/config.fish:
