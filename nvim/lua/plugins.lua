@@ -7,10 +7,9 @@ return require("packer").startup(
     function()
         use "wbthomason/packer.nvim"
         use {
-          "Shatur/neovim-ayu",
+          "navarasu/onedark.nvim",
           config = function()
-            require('ayu').colorscheme()
-            require('ayu').setup({})
+            require('onedark').setup()
           end
         }
 	use {
@@ -30,7 +29,7 @@ return require("packer").startup(
           "nvim-lualine/lualine.nvim",
           config = function()
             require('lualine').setup{
-              options = {theme = "ayu_light"}
+              options = {theme = "onedark"}
           }
           end
         }
