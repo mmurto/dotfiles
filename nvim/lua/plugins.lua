@@ -7,9 +7,11 @@ return require("packer").startup(
     function()
         use "wbthomason/packer.nvim"
         use {
-          "shaunsingh/nord.nvim",
+          "projekt0n/github-nvim-theme",
           config = function()
-            require('nord').set()
+            require('github-theme').setup({
+              theme_style = "light"
+            })
           end
         }
 	use {
@@ -28,11 +30,7 @@ return require("packer").startup(
         use {
           "hoob3rt/lualine.nvim",
           config = function()
-            require('lualine').setup{
-              options = {
-                theme = 'nord'
-              }
-	    }
+            require('lualine').setup{}
           end
         }
 	use {

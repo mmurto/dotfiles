@@ -13,10 +13,10 @@ if not g.vscode then
   g.mapleader = " "
 
   vim.cmd [[packadd packer.nvim]]
+  require('misc')
   require('plugins')
   require('mappings')
 
-  require('misc')
 
   local function setup_servers()
     require'lspinstall'.setup()
