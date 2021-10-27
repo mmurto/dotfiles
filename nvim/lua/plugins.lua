@@ -18,6 +18,13 @@ return require("packer").startup(
             require('tree')
           end
         }
+        use {
+          'Saecki/crates.nvim',
+          requires = { 'nvim-lua/plenary.nvim' },
+          config = function()
+            require('crates').setup()
+          end,
+        }
 	use {
           "akinsho/nvim-bufferline.lua",
           config = function()
