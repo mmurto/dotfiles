@@ -44,4 +44,6 @@ set -g fish_pager_color_prefix $cyan
 set -g fish_pager_color_completion $foreground
 set -g fish_pager_color_description $comment
 
+set -gx EDITOR nvim
+
 starship init fish | source
