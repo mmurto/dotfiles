@@ -142,5 +142,11 @@ return require("packer").startup(
             require "surround".setup {}
           end
         }
+        use {
+          'pwntester/octo.nvim', 
+          config=function()
+            require"octo".setup()
+          end
+        }
     end
 )

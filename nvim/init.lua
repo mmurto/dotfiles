@@ -16,6 +16,7 @@ if not g.vscode then
   require('misc')
   require('plugins')
   require('mappings')
+  require('which-keys')
 
 
   local function setup_servers()
