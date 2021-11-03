@@ -22,8 +22,11 @@ if not g.vscode then
   local function setup_servers()
     require'lspinstall'.setup()
     local servers = require'lspinstall'.installed_servers()
+    local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
     for _, server in pairs(servers) do
-      require'lspconfig'[server].setup{on_attach=require'completion'.on_attach}
+      require'lspconfig'[server].setup{
+        capabilities = capabilities
+      }
     end
   end
 

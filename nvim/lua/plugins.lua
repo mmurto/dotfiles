@@ -15,7 +15,11 @@ return require("packer").startup(
 	use {
           "kyazdani42/nvim-tree.lua",
           config = function()
-            require('tree')
+            require('nvim-tree').setup{
+              view = {
+                side = 'right'
+              }
+            }
           end
         }
         use {
@@ -54,12 +58,6 @@ return require("packer").startup(
           end
         }
 	use {
-          "windwp/nvim-autopairs",
-          config = function()
-            require('nvim-autopairs').setup()
-          end
-        }
-	use {
           "nvim-treesitter/nvim-treesitter",
           config = function()
             require('nvim-treesitter.configs').setup{
@@ -73,32 +71,75 @@ return require("packer").startup(
             }
           end
         }
+        use 'SirVer/ultisnips'
         use "neovim/nvim-lspconfig"
+        use 'hrsh7th/cmp-nvim-lsp'
+        use 'hrsh7th/cmp-buffer'
+        use 'hrsh7th/cmp-path'
+        use 'hrsh7th/cmp-cmdline'
         use {
-          "hrsh7th/nvim-compe",
+          'hrsh7th/nvim-cmp',
           config = function()
-            require('compe').setup {
-              enabled = true;
-              autocomplete = true;
-              debug = false;
-              min_length = 1;
-              preselect = 'enable';
-              throttle_time = 80;
-              source_timeout = 200;
-              incomplete_delay = 400;
-              max_abbr_width = 100;
-              max_kind_width = 100;
-              max_menu_width = 100;
-              documentation = true;
+            local cmp = require'cmp'
+            cmp.setup({
+              snippet = {
+                -- REQUIRED - you must specify a snippet engine
+                expand = function(args)
+                  -- vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
+                  -- require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
+                  vim.fn["UltiSnips#Anon"](args.body) -- For `ultisnips` users.
+                  -- require'snippy'.expand_snippet(args.body) -- For `snippy` users.
+                end,
+              },
+              mapping = {
+                ['<Tab>'] = function(fallback)
+                    if cmp.visible() then
+                      cmp.select_next_item()
+                    else
+                      fallback()
+                    end
+                  end,
+                  ['<S-Tab>'] = function(fallback)
+                    if cmp.visible() then
+                      cmp.select_prev_item()
+                    else
+                      fallback()
+                    end
+                  end,
+                ['<C-d>'] = cmp.mapping(cmp.mapping.scroll_docs(-4), { 'i', 'c' }),
+                ['<C-f>'] = cmp.mapping(cmp.mapping.scroll_docs(4), { 'i', 'c' }),
+                ['<C-Space>'] = cmp.mapping(cmp.mapping.complete(), { 'i', 'c' }),
+                ['<C-e>'] = cmp.mapping({
+                  i = cmp.mapping.abort(),
+                  c = cmp.mapping.close(),
+                }),
+                ['<CR>'] = cmp.mapping.confirm({ select = true }),
+              },
+              sources = cmp.config.sources({
+                { name = 'nvim_lsp' },
+                -- { name = 'vsnip' }, -- For vsnip users.
+                -- { name = 'luasnip' }, -- For luasnip users.
+                { name = 'path' },
+                { name = 'ultisnips' }, -- For ultisnips users.
+                -- { name = 'snippy' }, -- For snippy users.
+              })
+            })
 
-              source = {
-                path = true;
-                buffer = true;
-                calc = true;
-                nvim_lsp = true;
-                nvim_lua = true;
-            };
-          }
+            -- Use buffer source for `/` (if you enabled `native_menu`, this won't work anymore).
+            cmp.setup.cmdline('/', {
+              sources = {
+                { name = 'buffer' }
+              }
+            })
+
+            -- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
+            cmp.setup.cmdline(':', {
+              sources = cmp.config.sources({
+                { name = 'path' }
+              }, {
+                { name = 'cmdline' }
+              })
+            })
           end
         }
         use {
@@ -111,7 +152,6 @@ return require("packer").startup(
         use "nvim-lua/plenary.nvim"
         use "alvan/vim-closetag"
         use 'kabouzeid/nvim-lspinstall'
-        use 'nvim-lua/completion-nvim'
         use {
           "folke/which-key.nvim",
           config = function()
