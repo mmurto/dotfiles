@@ -80,7 +80,7 @@ return require("packer").startup(
         use "sbdchd/neoformat"
         use "nvim-lua/plenary.nvim"
         use "alvan/vim-closetag"
-        use 'kabouzeid/nvim-lspinstall'
+        use 'williamboman/nvim-lsp-installer'
         use {
           "folke/which-key.nvim",
           config = function()
