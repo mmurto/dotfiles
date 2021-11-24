@@ -1,6 +1,6 @@
 local scopes = {o = vim.o, b = vim.bo, w = vim.wo}
 
-local function opt(scope, key, value)
+function opt(scope, key, value)
     scopes[scope][key] = value
     if scope ~= "o" then
         scopes["o"][key] = value
@@ -31,3 +31,5 @@ opt("o", "completeopt", "menuone,noinsert,noselect")
 opt("b", "expandtab", true)
 opt("b", "shiftwidth", 2)
 opt("o", "background", "light")
+
+vim.g.onedark_style = "darker"

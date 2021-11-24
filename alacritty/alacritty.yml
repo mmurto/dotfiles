@@ -154,6 +154,8 @@ schemes:
       background: '0x1e2127'
       foreground: '0xabb2bf'
 
+      bright_foreground: '0xe6efff'
+
     # Normal colors
     normal:
       black:   '0x1e2127'
@@ -163,7 +165,7 @@ schemes:
       blue:    '0x61afef'
       magenta: '0xc678dd'
       cyan:    '0x56b6c2'
-      white:   '0xabb2bf'
+      white:   '0x828791'
 
     # Bright colors
     bright:
@@ -174,6 +176,26 @@ schemes:
       blue:    '0x61afef'
       magenta: '0xc678dd'
       cyan:    '0x56b6c2'
-      white:   '0xffffff'
+      white:   '0xe6efff'
+
+    dim:
+      black:   '0x1e2127'
+      red:     '0xe06c75'
+      green:   '0x98c379'
+      yellow:  '0xd19a66'
+      blue:    '0x61afef'
+      magenta: '0xc678dd'
+      cyan:    '0x56b6c2'
+      white:   '0x828791'
+
+    # Indexed Colors
+    #
+    # The indexed colors include all colors from 16 to 256.
+    # When these are not set, they're filled with sensible defaults.
+    #indexed_colors:
+    #  - { index: 16, color: '0x000000' }
+
+    # Normal colors
+
 
 colors: *onedark
