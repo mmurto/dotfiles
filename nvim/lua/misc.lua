@@ -31,5 +31,6 @@ opt("o", "completeopt", "menuone,noinsert,noselect")
 opt("b", "expandtab", true)
 opt("b", "shiftwidth", 2)
 opt("o", "background", "light")
+opt("o", "scrolloff", 10)
 
 vim.g.onedark_style = "darker"
