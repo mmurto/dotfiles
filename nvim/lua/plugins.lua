@@ -126,5 +126,16 @@ return require("packer").startup(
         use {
           'APZelos/blamer.nvim'
         }
+        use {
+          'sindrets/diffview.nvim',
+          requires = 'nvim-lua/plenary.nvim',
+          config=function()
+            require('diffview').setup{
+              file_panel = {
+                position = "right"
+              }
+            }
+          end
+        }
     end
 )
