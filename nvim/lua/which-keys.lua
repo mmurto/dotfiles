@@ -32,6 +32,9 @@ wk.register({
           "<cmd>Octo comment delete<cr>", "Delete comment"
         },
       }
+    },
+    d = {
+      "<cmd>DiffviewOpen<cr>", "Open Diffview"
     }
   },
   f = {
