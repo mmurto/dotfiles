@@ -17,6 +17,7 @@ opt("w", "relativenumber", true)
 opt("o", "numberwidth", 2)
 opt("w", "cul", true)
 opt("b", "smartindent", true)
+opt("o", "wrap", false)
 
 opt("o", "mouse", "a")
 
