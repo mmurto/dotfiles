@@ -123,5 +123,8 @@ return require("packer").startup(
             require('nvim-autopairs').setup{}
           end
         }
+        use {
+          'APZelos/blamer.nvim'
+        }
     end
 )
