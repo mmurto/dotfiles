@@ -26,8 +26,18 @@ if not g.vscode then
 
   if rust_analyzer_available then
       rust_analyzer_requested:on_ready(function ()
-          local opts = {}
-          rust_analyzer_requested:setup(opts)
+          rust_analyzer_requested:setup({
+            settings = {
+              ['rust-analyzer'] = {
+                checkOnSave = {
+                  allFeatures = true,
+                  overrideCommand = {
+                    'cargo', 'clippy', '--workspace', '--message-format=json', '--all-targets', '--all-features'
+                  }
+                }
+              }
+            }
+          })
       end)
       if not rust_analyzer_requested:is_installed() then
           -- Queue the server to be installed
