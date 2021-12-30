@@ -2,10 +2,11 @@
     link:
       relink: true
       create: true
+    clean:
+      recursive: true
 
 - clean: 
     # General
-    - '~'
     - '~/.config'
 
     # Neovim
@@ -41,7 +42,7 @@
     ~/.config/nvim/init.lua:
       path: nvim/init.lua
     ~/.config/nvim/lua:
-      path: nvim/lua/**/*.lua
+      path: nvim/lua/**.lua
       glob: true
     ~/.config/nvim/coc-settings.json:
       path: nvim/coc-settings.json
