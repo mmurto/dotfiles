@@ -33,6 +33,15 @@ wk.register({
         },
       }
     }
+  },
+  f = {
+    name = "Find",
+    s = {
+      "<cmd>Telescope lsp_document_symbols<cr>", "Document symbols",
+    },
+    w = {
+      "<cmd>Telescope lsp_workspace_symbols<cr>", "Workspace symbols",
+    }
   }
 },
 { 
