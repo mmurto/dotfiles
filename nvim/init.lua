@@ -18,30 +18,49 @@ if not g.vscode then
   require('mappings')
   require('which-keys')
 
-  local lsp_installer = require("nvim-lsp-installer")
-
   -- Register a handler that will be called for all installed servers.
   -- Alternatively, you may also register handlers on specific server instances instead (see example below).
-  lsp_installer.on_server_ready(function(server)
-      local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
-      local opts = {
-        capabilities = capabilities
-      }
+  local lsp_installer_servers = require'nvim-lsp-installer.servers'
 
-      -- (optional) Customize the options passed to the server
-      -- if server.name == "tsserver" then
-      --     opts.root_dir = function() ... end
-      -- end
+  local rust_analyzer_available, rust_analyzer_requested = lsp_installer_servers.get_server("rust_analyzer")
 
-      -- This setup() function is exactly the same as lspconfig's setup function.
-      -- Refer to https://github.com/neovim/nvim-lspconfig/blob/master/ADVANCED_README.md
-      server:setup(opts)
-  end)
+  if rust_analyzer_available then
+      rust_analyzer_requested:on_ready(function ()
+          local opts = {}
+          rust_analyzer_requested:setup(opts)
+      end)
+      if not rust_analyzer_requested:is_installed() then
+          -- Queue the server to be installed
+          rust_analyzer_requested:install()
+      end
+  end
 
+  local sumneko_lua_available, sumneko_lua_requested = lsp_installer_servers.get_server("sumneko_lua")
 
-  local luadev = require("lua-dev").setup({})
-  local lspconfig = require("lspconfig")
-  lspconfig.sumneko_lua.setup(luadev)
+  if sumneko_lua_available then
+      sumneko_lua_requested:on_ready(function ()
+          local luadev = require("lua-dev").setup({})
+          sumneko_lua_requested:setup(luadev)
+      end)
+      if not sumneko_lua_requested:is_installed() then
+          -- Queue the server to be installed
+          sumneko_lua_requested:install()
+      end
+  end
+
+  local pyright_available, pyright_requested = lsp_installer_servers.get_server("pyright")
+
+  if pyright_available then
+      pyright_requested:on_ready(function ()
+          local opts = {}
+          pyright_requested:setup(opts)
+      end)
+      if not pyright_requested:is_installed() then
+          -- Queue the server to be installed
+          pyright_requested:install()
+      end
+  end
+
 else
   print("Vscode found")
 end
