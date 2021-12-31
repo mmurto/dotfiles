@@ -20,57 +20,38 @@ if not g.vscode then
 
   -- Register a handler that will be called for all installed servers.
   -- Alternatively, you may also register handlers on specific server instances instead (see example below).
-  local lsp_installer_servers = require'nvim-lsp-installer.servers'
+  local lsp_installer = require("nvim-lsp-installer")
 
-  local rust_analyzer_available, rust_analyzer_requested = lsp_installer_servers.get_server("rust_analyzer")
+  lsp_installer.on_server_ready(function(server)
+      local opts = {}
 
-  if rust_analyzer_available then
-      rust_analyzer_requested:on_ready(function ()
-          rust_analyzer_requested:setup({
-            settings = {
-              ['rust-analyzer'] = {
-                checkOnSave = {
-                  allFeatures = true,
-                  overrideCommand = {
-                    'cargo', 'clippy', '--workspace', '--message-format=json', '--all-targets', '--all-features'
-                  }
+      if server.name == "rust_analyzer" then
+          -- Initialize the LSP via rust-tools instead
+          opts.settings = {
+            ['rust-analyzer'] = {
+              checkOnSave = {
+                allFeatures = true,
+                overrideCommand = {
+                  'cargo', 'clippy', '--workspace', '--message-format=json', '--all-targets', '--all-features'
                 }
               }
             }
-          })
-      end)
-      if not rust_analyzer_requested:is_installed() then
-          -- Queue the server to be installed
-          rust_analyzer_requested:install()
-      end
-  end
-
-  local sumneko_lua_available, sumneko_lua_requested = lsp_installer_servers.get_server("sumneko_lua")
-
-  if sumneko_lua_available then
-      sumneko_lua_requested:on_ready(function ()
+          }
+          require("rust-tools").setup {
+              -- The "server" property provided in rust-tools setup function are the
+              -- settings rust-tools will provide to lspconfig during init.            -- 
+              -- We merge the necessary settings from nvim-lsp-installer (server:get_default_options())
+              -- with the user's own settings (opts).
+              server = vim.tbl_deep_extend("force", server:get_default_options(), opts),
+          }
+          server:attach_buffers()
+      elseif server.name == "sumneko_lua" then
           local luadev = require("lua-dev").setup({})
-          sumneko_lua_requested:setup(luadev)
-      end)
-      if not sumneko_lua_requested:is_installed() then
-          -- Queue the server to be installed
-          sumneko_lua_requested:install()
+          server:setup(luadev)
+      else
+          server:setup(opts)
       end
-  end
-
-  local pyright_available, pyright_requested = lsp_installer_servers.get_server("pyright")
-
-  if pyright_available then
-      pyright_requested:on_ready(function ()
-          local opts = {}
-          pyright_requested:setup(opts)
-      end)
-      if not pyright_requested:is_installed() then
-          -- Queue the server to be installed
-          pyright_requested:install()
-      end
-  end
-
+  end)
 else
   print("Vscode found")
 end
