@@ -137,5 +137,11 @@ return require("packer").startup(
             }
           end
         }
+        use {
+          'norcalli/nvim-terminal.lua',
+          config=function()
+            require'terminal'.setup()
+          end
+        }
     end
 )
