@@ -113,7 +113,7 @@ return require("packer").startup(
           end
         }
         use {
-          'pwntester/octo.nvim', 
+          'pwntester/octo.nvim',
           config=function()
             require"octo".setup()
           end
@@ -146,6 +146,13 @@ return require("packer").startup(
         }
         use {
           'simrat39/rust-tools.nvim',
+        }
+        use {
+          "folke/trouble.nvim",
+          requires = "kyazdani42/nvim-web-devicons",
+          config = function()
+            require("trouble").setup {}
+          end
         }
     end
 )
