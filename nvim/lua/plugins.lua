@@ -62,6 +62,7 @@ return require("packer").startup(
           config = [[require('config.nvim-treesitter')]]
         }
         use 'SirVer/ultisnips'
+        use 'honza/vim-snippets'
         use "neovim/nvim-lspconfig"
         use 'hrsh7th/cmp-nvim-lsp'
         use 'hrsh7th/cmp-buffer'

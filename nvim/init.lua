@@ -24,6 +24,8 @@ if not g.vscode then
 
   lsp_installer.on_server_ready(function(server)
       local opts = {}
+      local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+      opts.capabilities = capabilities
 
       if server.name == "rust_analyzer" then
           -- Initialize the LSP via rust-tools instead
