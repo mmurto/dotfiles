@@ -154,5 +154,12 @@ return require("packer").startup(
             require("trouble").setup {}
           end
         }
+        use {
+          'TimUntersberger/neogit',
+          requires = 'nvim-lua/plenary.nvim',
+          config = function()
+            require("neogit").setup {}
+          end
+        }
     end
 )
