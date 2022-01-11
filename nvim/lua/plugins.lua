@@ -161,5 +161,9 @@ return require("packer").startup(
             require("neogit").setup {}
           end
         }
+        use {
+          'ckipp01/nvim-jenkinsfile-linter',
+          requires = { "nvim-lua/plenary.nvim" }
+        }
     end
 )
