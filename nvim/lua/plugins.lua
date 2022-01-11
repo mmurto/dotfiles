@@ -9,7 +9,7 @@ return require("packer").startup(
         use {
           "navarasu/onedark.nvim",
           config = function()
-            require('onedark').setup()
+            require('onedark').load()
           end
         }
 	use {
