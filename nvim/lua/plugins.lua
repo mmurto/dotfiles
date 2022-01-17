@@ -8,9 +8,9 @@ return require("packer").startup(
         use "wbthomason/packer.nvim"
         use {
           "navarasu/onedark.nvim",
-          config = function()
-            require('onedark').load()
-          end
+          -- config = function()
+            -- require('onedark').load()
+          -- end
         }
 	use {
           "kyazdani42/nvim-tree.lua",
@@ -40,7 +40,7 @@ return require("packer").startup(
           "nvim-lualine/lualine.nvim",
           config = function()
             require('lualine').setup{
-              options = {theme = "onedark"}
+              options = {theme = "gruvbox_dark"}
           }
           end
         }
@@ -164,6 +164,9 @@ return require("packer").startup(
         use {
           'ckipp01/nvim-jenkinsfile-linter',
           requires = { "nvim-lua/plenary.nvim" }
+        }
+        use {
+          'ellisonleao/gruvbox.nvim'
         }
     end
 )

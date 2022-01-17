@@ -33,3 +33,6 @@ opt("b", "expandtab", true)
 opt("b", "shiftwidth", 2)
 opt("o", "scrolloff", 10)
 opt("o", "showmode", false)
+
+opt("o", "background", "dark")
+vim.cmd([[colorscheme gruvbox]])
