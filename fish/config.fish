@@ -47,10 +47,3 @@ set -g fish_pager_color_description $comment
 set -gx EDITOR nvim
 
 starship init fish | source
-
-function nvm
-   bass source (brew --prefix nvm)/nvm.sh --no-use ';' nvm $argv
-end
-
-set -x NVM_DIR ~/.nvm
-nvm use default --silent
