@@ -9,6 +9,7 @@
 	program = gpg2
 [core]
 	pager = delta
+	editor = code --wait
 [github]
 	user = mmurto
 [pull]
@@ -18,9 +19,13 @@
 [difftool]
     prompt = true
 [diff]
-    tool = nvimdiff
-[difftool "nvimdiff"]
-    cmd = "nvim -d \"$LOCAL\" \"$REMOTE\""
+    tool = vscode
+[difftool "vscode"]
+    cmd = code --wait --diff $LOCAL $REMOTE
+[merge]
+    tool = vscode
+[mergetool "vscode"]
+    cmd = code --wait $MERGED
 [delta]
 	features = side-by-side line-numbers decorations
 	whitespace-error-style = 22 reverse
