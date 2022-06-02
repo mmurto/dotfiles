@@ -38,10 +38,13 @@ return require("packer").startup(
 	use "kyazdani42/nvim-web-devicons"
         use {
           "nvim-lualine/lualine.nvim",
+          after = "github-nvim-theme",
           config = function()
             require('lualine').setup{
-              options = {theme = "gruvbox_dark"}
-          }
+              options = {
+                theme = "auto"
+              }
+            }
           end
         }
 	use {
@@ -106,7 +109,7 @@ return require("packer").startup(
           end
         }
         use {
-          'blackCauldron7/surround.nvim',
+          'ur4ltz/surround.nvim',
           config=function()
             vim.g.surround_prefix = "<leader>s"
             require "surround".setup {}
@@ -166,7 +169,12 @@ return require("packer").startup(
           requires = { "nvim-lua/plenary.nvim" }
         }
         use {
-          'ellisonleao/gruvbox.nvim'
+          'projekt0n/github-nvim-theme',
+          config = function()
+            require("github-theme").setup({
+              theme_style = "light"
+            })
+          end
         }
     end
 )

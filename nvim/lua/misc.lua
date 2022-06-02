@@ -35,4 +35,3 @@ opt("o", "scrolloff", 10)
 opt("o", "showmode", false)
 
 opt("o", "background", "dark")
-vim.cmd([[colorscheme gruvbox]])
