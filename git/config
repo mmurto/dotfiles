@@ -9,7 +9,7 @@
 	program = gpg2
 [core]
 	pager = delta
-	editor = code --wait
+	editor = nvim
 [github]
 	user = mmurto
 [pull]
@@ -19,13 +19,15 @@
 [difftool]
     prompt = true
 [diff]
-    tool = vscode
-[difftool "vscode"]
-    cmd = code --wait --diff $LOCAL $REMOTE
+    tool = vimdiff
+[difftool "nvim"]
+    prompt = false
 [merge]
-    tool = vscode
-[mergetool "vscode"]
-    cmd = code --wait $MERGED
+    tool = vimdiff
+[mergetool]
+    prompt = true
+[mergetool "vimdiff"]
+    cmd = nvim -d $LOCAL $REMOTE $MERGED -c '$wincmd w' -c 'wincmd J'
 [delta]
 	features = side-by-side line-numbers decorations
 	whitespace-error-style = 22 reverse
