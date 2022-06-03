@@ -78,6 +78,10 @@
     ~/.config/starship.toml:
       path: starship/starship.toml
 
+    # Broot
+    ~/.config/broot/conf.toml:
+      path: broot/conf.toml
+
 - shell:
     - [git submodule update --init --recursive, Installing submodules]
     - [curl -fsSL https://starship.rs/install.sh | bash /dev/stdin --yes, Installing Starship]
