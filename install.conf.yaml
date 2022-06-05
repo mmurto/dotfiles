@@ -35,8 +35,6 @@
       path: tmux/tmux.conf
     ~/.tmux/plugins/tpm:
       path: tmux/plugins/tpm
-    ~/.tmux/tmuxline.conf:
-      path: tmux/tmuxline.conf
 
     # Neovim
     ~/.config/nvim/init.lua:
