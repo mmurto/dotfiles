@@ -178,5 +178,8 @@ return require("packer").startup(
             })
           end
         }
+        use {
+          'simrat39/symbols-outline.nvim',
+        }
     end
 )
