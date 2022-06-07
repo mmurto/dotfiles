@@ -181,5 +181,8 @@ return require("packer").startup(
         use {
           'simrat39/symbols-outline.nvim',
         }
+        use {
+          'cuducos/yaml.nvim',
+        }
     end
 )

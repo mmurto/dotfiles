@@ -29,8 +29,6 @@ map("n", "<leader>lf", [[<Cmd>lua vim.lsp.buf.formatting()<CR>]], opt)
 map("n", "K", [[<Cmd>lua vim.lsp.buf.hover()<CR>]], opt)
 map("n", "<C-k>", [[<Cmd>lua vim.lsp.buf.signature_help()<CR>]], opt)
 map("n", "<C-n>", ":NvimTreeToggle<CR>", opt)
-map("n", "ö", ":", opt)
-map("x", "ö", ":", opt)
 
 
 local t = function(str)
