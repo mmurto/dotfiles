@@ -70,12 +70,3 @@ vim.api.nvim_set_keymap(
         silent = true
     }
 )
-vim.api.nvim_set_keymap(
-    "n",
-    "ö",
-    ":Telescope commands<CR>",
-    {
-        noremap = true,
-        silent = true
-    }
-)
