@@ -33,5 +33,6 @@ opt("b", "expandtab", true)
 opt("b", "shiftwidth", 2)
 opt("o", "scrolloff", 10)
 opt("o", "showmode", false)
+opt("o", "cmdheight", 0)
 
 opt("o", "background", "dark")
