@@ -50,6 +50,15 @@ if not g.vscode then
       elseif server.name == "sumneko_lua" then
           local luadev = require("lua-dev").setup({})
           server:setup(luadev)
+      elseif server.name == "yamlls" then
+          opts.settings = {
+              yaml = {
+                  schemas = {
+                      ["https://squidfunk.github.io/mkdocs-material/schema.json"] = "mkdocs.yml"
+                  }
+              }
+          }
+          server:setup(opts)
       else
           server:setup(opts)
       end
