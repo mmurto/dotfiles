@@ -9,7 +9,7 @@
 	program = gpg2
 [core]
 	pager = delta
-	editor = nvim
+	editor = "code --wait"
 [github]
 	user = mmurto
 [pull]
