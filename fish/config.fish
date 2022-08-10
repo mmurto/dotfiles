@@ -15,3 +15,8 @@ set -gx EDITOR nvim
 starship init fish | source
 
 zoxide init fish | source
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+eval /home/mikko/miniconda3/bin/conda "shell.fish" "hook" $argv | source
+# <<< conda initialize <<<
+
