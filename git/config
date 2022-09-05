@@ -1,6 +1,6 @@
 [user]
 	name = Mikko Murto
-	email = mikko.murto@hhpartners.fi
+	email = mikko.murto@gmail.com
 [ui "color"]
 	ui = always
 [color]
@@ -43,3 +43,5 @@
 	clean = git-lfs clean -- %f
 [init]
 	defaultBranch = main
+[alias]
+	change-commits = "!f() { VAR=$1; OLD=$2; NEW=$3; shift 3; git filter-branch --env-filter \"if [[ \\\"$\\`echo $VAR\\`\\\" = '$OLD' ]]; then export $VAR='$NEW'; fi\" $@; }; f"
