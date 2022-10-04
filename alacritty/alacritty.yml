@@ -228,4 +228,4 @@ schemes:
       - { index: 16, color: '0xd18616' }
       - { index: 17, color: '0xcd3131' }
 
-colors: *github
+colors: *tokyo-night-storm
