@@ -14,3 +14,8 @@ set -gx EDITOR nvim
 starship init fish | source
 
 zoxide init fish | source
+
+# pnpm
+set -gx PNPM_HOME "/Users/mikkomurto/Library/pnpm"
+set -gx PATH "$PNPM_HOME" $PATH
+# pnpm end
